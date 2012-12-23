@@ -10,11 +10,25 @@ fi
 # =============================================================================
 # Closure Compiler
 # =============================================================================
-echo "Grabbing latest Closure Compiler..."
+echo "Updating to the latest Closure Compiler..."
 
-# TODO(benvanik): compile from source
-wget -nv http://closure-compiler.googlecode.com/files/compiler-latest.zip
-unzip -o -q compiler-latest.zip
-rm compiler-latest.zip
+# wget -nv http://closure-compiler.googlecode.com/files/compiler-latest.zip
+# unzip -o -q compiler-latest.zip
+# rm compiler-latest.zip
+
+svn checkout http://closure-compiler.googlecode.com/svn/trunk/ build-temp
+cd build-temp
+patch -p0 < ../patch.diff
+ant
+cp build/compiler.jar ../
+cp build/externs.zip ../
+cd ..
+rm -rf build-temp
+if [ -d "externs" ]; then
+  rm -rf externs
+fi
+mkdir externs
+unzip -d externs externs.zip
+rm externs.zip
 
 echo ""
