@@ -22,6 +22,13 @@
  * @externs
  */
 
+
+/**
+ * @param {boolean=} opt_center
+ * @see https://bugzilla.mozilla.org/show_bug.cgi?id=403510
+ */
+Element.prototype.scrollIntoViewIfNeeded = function(opt_center) {};
+
 /**
  * @constructor
  * @see http://trac.webkit.org/browser/trunk/Source/WebCore/page/MemoryInfo.idl
@@ -135,6 +142,12 @@ Console.prototype.dir = function(value) {};
 Console.prototype.dirxml = function(var_args) {};
 
 /**
+ * @param {!Object} data
+ * @param {*=} opt_columns
+ */
+Console.prototype.table = function(data, opt_columns) {};
+
+/**
  * @return {undefined}
  */
 Console.prototype.trace = function() {};
@@ -157,7 +170,10 @@ Console.prototype.profile = function(opt_title) {};
 /** @type {Array.<ScriptProfile>} */
 Console.prototype.profiles;
 
-Console.prototype.profileEnd = function() {};
+/**
+ * @param {string=} opt_title
+ */
+Console.prototype.profileEnd = function(opt_title) {};
 
 /**
  * @param {string} name
@@ -179,7 +195,14 @@ Console.prototype.timeStamp = function(value) {};
  */
 Console.prototype.group = function(var_args) {};
 
+/**
+ * @param {...*} var_args
+ */
+Console.prototype.groupCollapsed = function(var_args) {};
+
 Console.prototype.groupEnd = function() {};
+
+Console.prototype.clear = function() {};
 
 /** @type {MemoryInfo} */
 Console.prototype.memory;

@@ -295,7 +295,7 @@ Window.prototype.getAttention = function() {};
 
 /**
  * @param {Element} element
- * @param {?string} pseudoElt
+ * @param {?string=} pseudoElt
  * @return {CSSStyleDeclaration}
  * @nosideeffects
  */
@@ -478,6 +478,7 @@ Document.prototype.popupNode;
 Document.prototype.referrer;
 
 /**
+ * @type {StyleSheetList}
  * @see https://developer.mozilla.org/en/DOM/document.styleSheets
  */
 Document.prototype.styleSheets;

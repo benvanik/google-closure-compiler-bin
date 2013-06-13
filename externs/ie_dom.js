@@ -274,10 +274,10 @@ function ClipboardData() {}
 
 /**
  * @see http://msdn.microsoft.com/en-us/library/ms535220(VS.85).aspx
- * @param {string} type Type of clipboard data to clear. 'Text' or
+ * @param {string=} opt_type Type of clipboard data to clear. 'Text' or
  *     'URL' or 'File' or 'HTML' or 'Image'.
  */
-ClipboardData.prototype.clearData = function(type) {};
+ClipboardData.prototype.clearData = function(opt_type) {};
 
 /**
  * @see http://msdn.microsoft.com/en-us/library/ms535220(VS.85).aspx
@@ -302,6 +302,13 @@ Window.prototype.ActiveXObject;
  * @see https://developer.mozilla.org/en/DOM/window
  */
 var window;
+
+/**
+ * @param {number|undefined|null} immediateID
+ * @see https://developer.mozilla.org/en-US/docs/DOM/window.clearImmediate
+ * @see http://msdn.microsoft.com/en-us/library/ie/hh924825(v=vs.85).aspx
+ */
+Window.prototype.clearImmediate = function(immediateID) {};
 
 /**
  * @see http://msdn.microsoft.com/en-us/library/ms535220(VS.85).aspx
@@ -463,6 +470,14 @@ Window.prototype.resizeTo = function(width, height) {};
 Window.prototype.setActive;
 
 /**
+ * @param {function()} callback
+ * @return {number}
+ * @see https://developer.mozilla.org/en-US/docs/DOM/window.setImmediate
+ * @see http://msdn.microsoft.com/en-us/library/ie/hh773176(v=vs.85).aspx
+ */
+Window.prototype.setImmediate = function(callback) {};
+
+/**
  * @see http://msdn.microsoft.com/en-us/library/ms536758(VS.85).aspx
  */
 Window.prototype.showHelp;
@@ -516,6 +531,7 @@ History.prototype.forward = function() {};
 HTMLFrameElement.prototype.allowTransparency;
 
 /**
+ * @type {Window}
  * @see http://msdn.microsoft.com/en-us/library/ms533692(VS.85).aspx
  */
 HTMLFrameElement.prototype.contentWindow;
@@ -528,6 +544,7 @@ HTMLFrameElement.prototype.contentWindow;
 HTMLIFrameElement.prototype.allowTransparency;
 
 /**
+ * @type {Window}
  * @see http://msdn.microsoft.com/en-us/library/ms533692(VS.85).aspx
  */
 HTMLIFrameElement.prototype.contentWindow;
@@ -970,6 +987,12 @@ Element.prototype.attachEvent;
  * @see http://msdn.microsoft.com/en-us/library/ms533546(VS.85).aspx
  */
 Element.prototype.canHaveChildren;
+
+/**
+ * @type {string}
+ * @see http://msdn.microsoft.com/en-us/library/ms533559(v=vs.85).aspx
+ */
+Element.prototype.classid;
 
 /**
  * @param {number} iCoordX Integer that specifies the client window coordinate

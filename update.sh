@@ -16,7 +16,7 @@ echo "Updating to the latest Closure Compiler..."
 # unzip -o -q compiler-latest.zip
 # rm compiler-latest.zip
 
-svn checkout http://closure-compiler.googlecode.com/svn/trunk/ build-temp
+git clone https://code.google.com/p/closure-compiler/ build-temp
 cd build-temp
 patch -p0 < ../patch.diff
 ant

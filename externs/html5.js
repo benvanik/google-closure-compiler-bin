@@ -35,30 +35,9 @@
 
 /**
  * @see https://developer.mozilla.org/En/Using_native_JSON
+ * @type {!JSONType}
  */
-Window.prototype.JSON = {};
-
-/**
- * @param {string} text
- * @param {(function(string, *) : *)=} opt_reviver
- * @return {*}
- * @throws {Error}
- * @nosideeffects
- * @see http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/
- */
-Window.prototype.JSON.parse = function(text, opt_reviver) {};
-
-/**
- * @param {*} value
- * @param {(Array.<string>|(function(string, *) : *)|null)=} opt_replacer
- * @param {(number|string)=} opt_space
- * @return {string}
- * @throws {Error}
- * @nosideeffects
- * @see http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/
- */
-Window.prototype.JSON.stringify =
-    function(value, opt_replacer, opt_space) {};
+Window.prototype.JSON;
 
 /**
  * @constructor
@@ -283,7 +262,7 @@ CanvasRenderingContext2D.prototype.rect = function(x, y, w, h) {};
  * @param {number} radius
  * @param {number} startAngle
  * @param {number} endAngle
- * @param {boolean} anticlockwise
+ * @param {boolean=} anticlockwise
  * @return {undefined}
  */
 CanvasRenderingContext2D.prototype.arc = function(
@@ -413,6 +392,17 @@ CanvasRenderingContext2D.prototype.setFillColor;
  * @return {undefined}
  */
 CanvasRenderingContext2D.prototype.setStrokeColor;
+
+/**
+ * @return {Array.<number>}
+ */
+CanvasRenderingContext2D.prototype.getLineDash;
+
+/**
+ * @param {Array.<number>} segments
+ * @return {undefined}
+ */
+CanvasRenderingContext2D.prototype.setLineDash;
 
 /** @type {string} */
 CanvasRenderingContext2D.prototype.fillColor;
@@ -1469,9 +1459,15 @@ MessageEvent.prototype.initMessageEventNS = function(namespaceURI, typeArg,
     portsArg) {};
 
 /**
- * HTML5 DataTransfer class
+ * HTML5 DataTransfer class.
+ *
+ * We say that this extends ClipboardData, because Event.prototype.clipboardData
+ * is a DataTransfer on WebKit but a ClipboardData on IE. The interfaces are so
+ * similar that it's easier to merge them.
+ *
  * @see http://dev.w3.org/html5/spec/dnd.html#the-dragevent-and-datatransfer-interfaces
  * @constructor
+ * @extends {ClipboardData}
  */
 function DataTransfer() {}
 
@@ -1489,18 +1485,21 @@ DataTransfer.prototype.files;
 
 /**
  * @param {string=} opt_format Format for which to remove data.
+ * @override
  */
 DataTransfer.prototype.clearData = function(opt_format) {};
 
 /**
  * @param {string} format Format for which to set data.
  * @param {string} data Data to add.
+ * @override
  */
 DataTransfer.prototype.setData = function(format, data) {};
 
 /**
  * @param {string} format Format for which to set data.
  * @return {string} Data for the given format.
+ * @override
  */
 DataTransfer.prototype.getData = function(format) { return ''; };
 
@@ -2545,6 +2544,9 @@ HTMLSelectElement.prototype.autofocus;
  */
 HTMLSelectElement.prototype.labels;
 
+/** @type {HTMLCollection} */
+HTMLSelectElement.prototype.selectedOptions;
+
 /** @type {string} */
 HTMLSelectElement.prototype.validationMessage;
 
@@ -2782,3 +2784,16 @@ Window.prototype.WebKitMutationObserver;
  * @type {function(new:MutationObserver, function(Array.<MutationRecord>))}
  */
 Window.prototype.MozMutationObserver;
+
+
+/**
+ * @see http://www.w3.org/TR/page-visibility/
+ * @type {string}
+ */
+Document.prototype.visibilityState;
+
+/**
+ * @see http://www.w3.org/TR/page-visibility/
+ * @type {boolean}
+ */
+Document.prototype.hidden;
