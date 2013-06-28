@@ -1,5 +1,5 @@
 /*
- * Copyright 2008 Closure Compiler Authors
+ * Copyright 2008 The Closure Compiler Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1172,6 +1172,36 @@ HTMLInputElement.prototype.step;
  */
 function HTMLMediaElement() {}
 
+/**
+ * @type {number}
+ * @const
+ */
+HTMLMediaElement.HAVE_NOTHING;  // = 0
+
+/**
+ * @type {number}
+ * @const
+ */
+HTMLMediaElement.HAVE_METADATA;  // = 1
+
+/**
+ * @type {number}
+ * @const
+ */
+HTMLMediaElement.HAVE_CURRENT_DATA;  // = 2
+
+/**
+ * @type {number}
+ * @const
+ */
+HTMLMediaElement.HAVE_FUTURE_DATA;  // = 3
+
+/**
+ * @type {number}
+ * @const
+ */
+HTMLMediaElement.HAVE_ENOUGH_DATA;  // = 4
+
 /** @type {MediaError} */
 HTMLMediaElement.prototype.error;
 
@@ -2296,6 +2326,7 @@ Float64Array.prototype.subarray = function(begin, opt_end) {};
  * @noalias
  * @throws {Error}
  * @nosideeffects
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays/DataView
  */
 function DataView(buffer, opt_byteOffset, opt_byteLength) {}
 
