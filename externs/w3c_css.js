@@ -224,6 +224,12 @@ CSSRule.prototype.parentStyleSheet;
 CSSRule.prototype.parentRule;
 
 /**
+ * @type {CSSStyleDeclaration}
+ * @see http://www.w3.org/TR/DOM-Level-2-Style/css.html#CSS-CSSStyleRule
+ */
+CSSRule.prototype.style;
+
+/**
  * Indicates that the rule is a {@see CSSUnknownRule}.
  * @type {number}
  * @see http://www.w3.org/TR/DOM-Level-2-Style/css.html#CSS-CSSRule-ruleType
@@ -1537,6 +1543,12 @@ CSSProperties.prototype.quotes;
 
 /**
  * @type {string}
+ * @see http://www.w3.org/TR/css3-ui/#resize
+ */
+CSSProperties.prototype.resize;
+
+/**
+ * @type {string}
  * @see http://www.w3.org/TR/DOM-Level-2-Style/css.html#CSS-CSSProperties-richness
  */
 CSSProperties.prototype.richness;
@@ -1787,6 +1799,11 @@ CSSProperties.prototype.transitionProperty;
  */
 CSSProperties.prototype.transitionTimingFunction;
 
+/**
+ * @type {string}
+ * @see http://www.w3.org/TR/SVG11/interact.html#PointerEventsProperty
+ */
+CSSProperties.prototype.pointerEvents;
 
 /**
  * TODO(dbeam): Put this in separate file named w3c_cssom.js.
@@ -2253,3 +2270,27 @@ ClientRect.prototype.width;
  * @see http://www.w3.org/TR/cssom-view/#dom-clientrect-height
  */
 ClientRect.prototype.height;
+
+/**
+ * @constructor
+ * http://www.w3.org/TR/css3-conditional/#CSS-interface
+ */
+function CSSInterface() {}
+
+/**
+ * @param {string} property
+ * @param {string=} opt_value
+ * @return {boolean}
+ */
+CSSInterface.prototype.supports = function(property, opt_value) {};
+
+/**
+ * TODO(nicksantos): This suppress tag probably isn't needed, and
+ * should be removed.
+ * @suppress {duplicate}
+ * @type {CSSInterface}
+ */
+var CSS;
+
+/** @type {CSSInterface} */
+Window.prototype.CSS;
